@@ -3,48 +3,48 @@ import java.util.Scanner;
 
 public class Hangman {
 
-	private static String[] words = {"terminator", "banana", "computer", "cow", "rain", "water" };
+	private static String[] words = {"courageous", "magnificent", "terrible", "righteous", "superficial" };
 	private static String word = words[(int) (Math.random() * words.length)];
-	private static String asterisk = new String(new char[word.length()]).replace("\0", "*");
-	private static int count = 0;
+	private static String replace = new String(new char[word.length()]).replace("\0", "*");
+	private static int attempts = 0;
 
 	public static void main(String[] args) {
-		Scanner sc = new Scanner(System.in);
+		Scanner input = new Scanner(System.in);
 
-		while (count < 7 && asterisk.contains("*")) {
+		while (attempts < 7 && replace.contains("*")) {
 			System.out.println("Guess any letter in the word");
-			System.out.println(asterisk);
-			String guess = sc.next();
+			System.out.println(replace);
+			String guess = input.next();
 			hang(guess);
 		}
-		sc.close();
+		input.close();
 	}
 
 	public static void hang(String guess) {
-		String newasterisk = "";
+		String newreplace = "";
 		for (int i = 0; i < word.length(); i++) {
 			if (word.charAt(i) == guess.charAt(0)) {
-				newasterisk += guess.charAt(0);
-			} else if (asterisk.charAt(i) != '*') {
-				newasterisk += word.charAt(i);
+				newreplace += guess.charAt(0);
+			} else if (replace.charAt(i) != '*') {
+				newreplace += word.charAt(i);
 			} else {
-				newasterisk += "*";
+				newreplace += "*";
 			}
 		}
 
-		if (asterisk.equals(newasterisk)) {
-			count++;
+		if (replace.equals(newreplace)) {
+			attempts++;
 			hangmanImage();
 		} else {
-			asterisk = newasterisk;
+			replace = newreplace;
 		}
-		if (asterisk.equals(word)) {
-			System.out.println("Correct! You win! The word was " + word);
+		if (replace.equals(word)) {
+			System.out.println("Great job! You win! The word was " + word);
 		}
 	}
 
 	public static void hangmanImage() {
-		if (count == 1) {
+		if (attempts == 1) {
 			System.out.println("Wrong guess, try again");
 			System.out.println();
 			System.out.println();
@@ -53,7 +53,7 @@ public class Hangman {
 			System.out.println("___|___");
 			System.out.println();
 		}
-		if (count == 2) {
+		if (attempts == 2) {
 			System.out.println("Wrong guess, try again");
 			System.out.println("   |");
 			System.out.println("   |");
@@ -64,7 +64,7 @@ public class Hangman {
 			System.out.println("   |");
 			System.out.println("___|___");
 		}
-		if (count == 3) {
+		if (attempts == 3) {
 			System.out.println("Wrong guess, try again");
 			System.out.println("   ____________");
 			System.out.println("   |");
@@ -76,7 +76,7 @@ public class Hangman {
 			System.out.println("   | ");
 			System.out.println("___|___");
 		}
-		if (count == 4) {
+		if (attempts == 4) {
 			System.out.println("Wrong guess, try again");
 			System.out.println("   ____________");
 			System.out.println("   |          _|_");
@@ -88,7 +88,7 @@ public class Hangman {
 			System.out.println("   |");
 			System.out.println("___|___");
 		}
-		if (count == 5) {
+		if (attempts == 5) {
 			System.out.println("Wrong guess, try again");
 			System.out.println("   ____________");
 			System.out.println("   |          _|_");
@@ -100,7 +100,7 @@ public class Hangman {
 			System.out.println("   |");
 			System.out.println("___|___");
 		}
-		if (count == 6) {
+		if (attempts == 6) {
 			System.out.println("Wrong guess, try again");
 			System.out.println("   ____________");
 			System.out.println("   |          _|_");
@@ -112,7 +112,7 @@ public class Hangman {
 			System.out.println("   |          / \\ ");
 			System.out.println("___|___      /   \\");
 		}
-		if (count == 7) {
+		if (attempts == 7) {
 			System.out.println("GAME OVER!");
 			System.out.println("   ____________");
 			System.out.println("   |          _|_");

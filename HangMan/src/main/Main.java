@@ -25,20 +25,22 @@ public static void main(String[] args) {
 public static void game(String guess) {
 	String newReplace = " ";
 	for (int i = 0; i < word.length(); i++) {
-			if(word.charAt(i)==guess.charAt(0)) {
+			if(word.charAt(i) == guess.charAt(0)) {
 				newReplace += guess.charAt(0);}
 			else if(replace.charAt(i) != '*') {
-				newReplace+=word.charAt(i);}
+				newReplace += word.charAt(i);}
 			else {
 				newReplace += "*";}
 			
 		}
 	if (replace.equals(newReplace)) {
 		attempts++;
-			}
+		hangmanImage();
+		}
 	else {
-		replace= newReplace;
-		hangmanImage();}
+		replace = newReplace;
+		
+		}
 	if (replace.equals(word)) {
 		System.out.println("Great job!!! The word was " + word);
 		}
