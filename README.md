@@ -6,4 +6,6 @@
    <param name="Hangman and Battleship" value="https://youtu.be/82-pNMmJ6L8" />
    <param name="wmode" value="transparent" />
    <embed src="https://youtu.be/82-pNMmJ6L8"
+         type="application/x-shockwave-flash"
+         wmode="transparent" width="425" height="350" />
 </object>
